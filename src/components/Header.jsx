@@ -6,11 +6,13 @@ import { CiCirclePlus, CiSearch } from "react-icons/ci";
 import { IoMdHome } from "react-icons/io";
 import { authOptions } from '../app/api/auth/[...nextauth]/route';
 import { useRouter } from 'next/navigation';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../../atom/modalAtom';
 
 export default function Header() {
   const {data:session} = useSession()
+  const [open, setOpen] = useRecoilState(modalState)
   const router = useRouter()
-  console.log(session)
   return (
     <div className='shadow-md  h-25 sticky top-0 bg-white z-30 '>
       <div className=' flex items-center justify-between max-w-6xl mx-4 xl:mx-auto'>
@@ -32,7 +34,7 @@ export default function Header() {
         <IoMdHome className='hidden md:inline-flex h-6 w-6 hover:scale-125 transition-transform duration-200 ease-out cursor-pointer'/>
         
         {session ? <> 
-          <CiCirclePlus className='h-6 w-6 hover:scale-125 transition-transform duration-200 ease-out cursor-pointer ' />
+          <CiCirclePlus onClick={()=>setOpen(prev=>!prev)} className='h-6 w-6 hover:scale-125 transition-transform duration-200 ease-out cursor-pointer ' />
         <img onClick={signOut} src={session.user.image} alt='logo' className='h-10 rounded-full cursor-pointer'  />
         </> : <button onClick={signIn} className='text-sm font-semibold text-blue-500 hover:text-blue-600 transition duration-200'>Sign in</button>} 
         </div>

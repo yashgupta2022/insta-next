@@ -1,6 +1,6 @@
-import Feed from "@/components/Feed";
-import Header from "@/components/Header";
-import Image from "next/image";
+import React from "react";
+import Header from "../components/Header";
+import Feed from "../components/Feed";
 
 export default function Home() {
   return (

@@ -16,7 +16,7 @@ export const authOptions = {
         session.user.username = session.user.name.split(" ").join("").toLowerCase()
         session.user.uid = token.sub
         return session
-      },
+      }
     },
     secret:process.env.SECRET,
   }

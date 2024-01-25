@@ -24,7 +24,7 @@ export default function Suggestions() {
     </div>
     <div className='overflow-y-scroll max-h-screen scrollbar-none'>
     {suggestions.map(suggestion=>{ 
-        return <div className='flex items-center justify-between mt-3 '>
+        return <div key={suggestion.id} className='flex items-center justify-between mt-3 '>
             <img src={suggestion.image} alt="" className='w-10 h-10 rounded-full border p-[2px]' />
             <div className='flex-1 ml-4 max-w-[15vw]'>
               <h2 className='font-semibold text-sm truncate'>{suggestion.username}</h2>

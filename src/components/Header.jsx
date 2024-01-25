@@ -4,7 +4,6 @@ import Image from 'next/image'
 import React from 'react'
 import { CiCirclePlus, CiSearch } from "react-icons/ci";
 import { IoMdHome } from "react-icons/io";
-import { authOptions } from '../app/api/auth/[...nextauth]/route';
 import { useRouter } from 'next/navigation';
 import { useRecoilState } from 'recoil';
 import { modalState } from '../../atom/modalAtom';
@@ -17,10 +16,10 @@ export default function Header() {
     <div className='shadow-md  h-25 sticky top-0 bg-white z-30 '>
       <div className=' flex items-center justify-between max-w-6xl mx-4 xl:mx-auto'>
         <div className='h-24 w-24 relative cursor-pointer hidden lg:inline-grid'>
-          <Image src='https://assets.stickpng.com/images/5a4e432a2da5ad73df7efe7a.png' alt='logo' layout='fill' className='object-contain' />
+          <Image onClick={()=>{router.push('/')}} src='https://assets.stickpng.com/images/5a4e432a2da5ad73df7efe7a.png' alt='logo' layout='fill' className='object-contain' />
         </div>
         <div className='h-24 w-10 relative cursor-pointer lg:hidden'>
-          <Image src='https://i.pinimg.com/originals/72/9f/77/729f7798561be2cb67f39e916a22eb6a.png' alt='logo' layout='fill' className='object-contain' />
+          <Image onClick={()=>{router.push('/')}} src='https://i.pinimg.com/originals/72/9f/77/729f7798561be2cb67f39e916a22eb6a.png' alt='logo' layout='fill' className='object-contain' />
         </div>
 
         <div className='relative mt-1 ml-2 mr-0'>
@@ -31,7 +30,7 @@ export default function Header() {
         </div>
 
         <div className='flex space-x-4 items-center  '>
-        <IoMdHome className='hidden md:inline-flex h-6 w-6 hover:scale-125 transition-transform duration-200 ease-out cursor-pointer'/>
+        <IoMdHome onClick={()=>{router.push('/')}} className='hidden md:inline-flex h-6 w-6 hover:scale-125 transition-transform duration-200 ease-out cursor-pointer'/>
         
         {session ? <> 
           <CiCirclePlus onClick={()=>setOpen(prev=>!prev)} className='h-6 w-6 hover:scale-125 transition-transform duration-200 ease-out cursor-pointer ' />
